@@ -2,11 +2,10 @@ library(rtweet)
 library(dplyr)
 library(stringr)
 
-setwd('C:/Users/andre/PycharmProjects/InmetroAnalize')
 getTweets <- function (app, list, n){
 
   # Cria o token de entrada com as permições de desenvolvedor
-  create_token(
+  token <- create_token(
     app = app,
     consumer_key = 'hJvDj0D2HKGshjl51phmZGjsd',
     consumer_secret = 'gv4HQkofQk6wJHkpNLpE2OOeMRBZzUSeSNXIV8Lv6kkmtH09Rp',
@@ -22,7 +21,7 @@ getTweets <- function (app, list, n){
    for (text in list[[1]]){
      #Modifica o + por OR, para que a pesquisa pprocure por, pelo menos uma das duas palavras separadas por +
      new_text <- str_replace(text, '\\+', 'OR')
-     new_tweets <- search_tweets(q = new_text, n = n, lang = 'pt', include_rts = FALSE, type = 'recent')
+     new_tweets <- search_tweets(q = new_text, n = n, lang = 'pt', include_rts = FALSE, type = 'recent', token = token)
      new_tweets <- new_tweets$created_at
 
      #Separa entre dia, semana, mes e o total
