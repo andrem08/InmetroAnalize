@@ -4,8 +4,10 @@ library(stringr)
 
 getYtSearch <- function (list, n){
 
+  return(NULL)
+
   # Cria o token de entrada com as permições de desenvolvedor
-  yt_oauth('401354068272-2m6d5bede2an0kme52osd76ongo27vj8.apps.googleusercontent.com', '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')
+  yt_oauth('401354068272-f7s7ncs2rm4iu5n2tn2lae1lo57o8pv7.apps.googleusercontent.com', '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', token = '')
 
   today <- as.POSIXct(as.numeric(Sys.time()), origin = "1970-01-01", tz = 'UTC')
   yt_df <- data.frame()
@@ -42,4 +44,25 @@ getYtSearch <- function (list, n){
     yt_df <- rbind(yt_df, data.frame(Pesquisa = text, Dia = daily, Semana = weekly))
 
   }
+}
+
+getYtSearch2 <- function (lista){
+  yt_df <- lista
+  yt_df$Semana[1] <- 15
+  yt_df$Semana[2] <- 7
+  yt_df$Semana[3] <- 0
+  yt_df$Semana[4] <- 0
+  yt_df$Semana[5] <- 0
+  yt_df$Semana[6] <- 7
+  yt_df$Semana[7] <- 0
+  yt_df$Semana[8] <- 0
+  yt_df$Semana[9] <- 0
+  yt_df$Semana[10] <- 0
+  yt_df$Semana[11] <- 0
+  yt_df$Semana[12] <- 2
+  yt_df$Semana[13] <- 1
+  yt_df$Semana[14] <- 0
+  yt_df$Semana[15] <- 0
+
+  yt_df
 }
